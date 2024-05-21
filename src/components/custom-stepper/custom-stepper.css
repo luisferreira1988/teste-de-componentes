@@ -1,0 +1,118 @@
+.stepper-wrapper {
+  font-family: Arial;
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.stepper-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
+}
+
+.stepper-item::before {
+  position: absolute;
+  content: '';
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+  top: 5px;
+  left: -50%;
+  z-index: 2;
+}
+
+.stepper-item::after {
+  position: absolute;
+  content: '';
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+  top: 5px;
+  left: 50%;
+  z-index: 2;
+}
+
+.stepper-item .step-counter {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #ccc;
+  margin-bottom: 8px;
+}
+
+.stepper-item .step-name {
+  color: #ccc;
+  font-size: 12px;
+}
+
+.stepper-item.completed .step-name {
+  color: #198754;
+}
+
+.stepper-item.active .step-name {
+  color: rgb(18, 108, 212);
+}
+
+.stepper-item.completed .step-counter {
+  background-color: #198754;
+}
+
+.stepper-item.completed::after {
+  position: absolute;
+  content: '';
+  border-bottom: 1px solid #198754;
+  width: 100%;
+  top: 5px;
+  left: 50%;
+  z-index: 3;
+}
+
+.stepper-item:first-child::before {
+  content: none;
+}
+.stepper-item:last-child::after {
+  content: none;
+}
+
+.blob {
+  background: transparent;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+  height: 100%;
+  width: 100%;
+  transform: scale(1);
+  animation: pulse-black 2s infinite;
+}
+
+.blob.white {
+  background: rgb(18, 108, 212);
+  box-shadow: 0 0 0 0 rgb(18, 108, 212);
+  animation: pulse-white 2s infinite;
+}
+
+@keyframes pulse-white {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(18, 108, 212, 0.7);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(18, 108, 212, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(18, 108, 212, 0);
+  }
+}
