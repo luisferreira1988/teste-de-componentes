@@ -23,9 +23,12 @@ function CustomStepper(props: CustomStepperProps) {
           } ${props.currentStep === step ? 'active' : ''}`}
         >
           <div className="step-counter">
-            {props.currentStep === step && <div className="blob white"></div>}
+            {props.currentStep === step && props.currentStep !== "Completed" && <div className="blob white"></div>}
+            {props.currentStep === step && props.currentStep === "Completed" && <div className="check"></div>}
           </div>
-          <div className="step-name">{step}</div>
+            {props.currentStep !== "Completed" && <div className="step-name">{step}</div>}
+            {props.currentStep === "Completed" && <div className="step-name check-name">{step}</div>}
+          
         </div>
       ))}
     </div>
